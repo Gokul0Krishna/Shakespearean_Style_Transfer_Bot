@@ -25,9 +25,9 @@ class Tokenizer():
         'converts str to int'
         return [self.string_to_int[ch] for ch in s]
     
-    def decoder(self,l:int)->str:
+    def decoder(self,l:list)->str:
          'converts int to str'
-         return ''.join([self.int_to_string[i]+" " for i in l])
+         return ''.join([self.int_to_string[int(i)]+" " for i in l])
     
 if __name__=='__main__':
     obj=Tokenizer()
