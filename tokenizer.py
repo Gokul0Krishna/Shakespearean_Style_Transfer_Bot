@@ -9,6 +9,8 @@ class Tokenizer():
         chars=sorted(set(self.data))
         self.string_to_int = { ch:i for i,ch in enumerate(chars) }
         self.int_to_string = { i:ch for i,ch in enumerate(chars) }
+        # print(len(self.string_to_int),len(self.int_to_string))
+        self.vocab_size = len(self.string_to_int)
 
     def word_tokenizer(self):
         'converts the words to int and stores the dataset'
@@ -31,6 +33,5 @@ if __name__=='__main__':
     obj=Tokenizer()
     # obj.character_tokenizer()
     # print(obj.encoder(s='gokul'))
-    obj.word_tokenizer()
+    obj.character_tokenizer()
     # print(obj.encoder(s=["to","be","or","not","to","be"]))
-    print(obj.decoder([22487, 2135, 15357, 15016, 22487, 2135]))
