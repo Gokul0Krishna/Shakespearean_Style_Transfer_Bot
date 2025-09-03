@@ -15,7 +15,7 @@ class Tokenizer():
     def word_tokenizer(self):
         'converts the words to int and stores the dataset'
         text = self.data.lower()
-        words = re.findall(r"\w+|[^\w\s]", text, re.UNICODE)
+        words = re.findall(r"\w+|\s|[^\w\s]", text, re.UNICODE)
         tokens = [i.removeprefix('_') for i in words]
         chars = sorted(set(tokens))
         self.string_to_int = { ch:i for i,ch in enumerate(chars) }
@@ -27,11 +27,14 @@ class Tokenizer():
     
     def decoder(self,l:list)->str:
          'converts int to str'
-         return ''.join([self.int_to_string[int(i)]+" " for i in l])
+         return ''.join([self.int_to_string[int(i)] for i in l])
     
 if __name__=='__main__':
     obj=Tokenizer()
     # obj.character_tokenizer()
     # print(obj.encoder(s='gokul'))
-    obj.character_tokenizer()
-    # print(obj.encoder(s=["to","be","or","not","to","be"]))
+    obj.word_tokenizer()
+    print(obj.encoder(s=obj.data.lower()))
+    # print(obj.decoder(l=[21829, 15093, 3, 1833, 7347, 3, 15093, 17787, 3, 14684, 15093, 21829, 3, 21829, 15093, 3, 1833, 7347, 3]))
+
+
